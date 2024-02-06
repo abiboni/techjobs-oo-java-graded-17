@@ -4,6 +4,7 @@ import javax.swing.text.Position;
 import java.util.Objects;
 
 public class Job {
+    String s = System.lineSeparator();
 
     private int id;
     private static int nextId = 1;
@@ -94,5 +95,10 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+//    TASK 5
+    public String toString() {
+        return s +"ID: " + this.id + s + "Name: " + this.name + s + "Employer: " + this.employer + s + "Location: " + this.location + s + "Position Type: " + this.positionType + s + "Core Competency: " + this.coreCompetency + s;
     }
 }
