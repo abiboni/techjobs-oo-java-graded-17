@@ -4,8 +4,6 @@ import javax.swing.text.Position;
 import java.util.Objects;
 
 public class Job {
-    String s = System.lineSeparator();
-
     private int id;
     private static int nextId = 1;
 
@@ -98,7 +96,15 @@ public class Job {
     }
 
 //    TASK 5
+    @Override
     public String toString() {
-        return s +"ID: " + this.id + s + "Name: " + this.name + s + "Employer: " + this.employer + s + "Location: " + this.location + s + "Position Type: " + this.positionType + s + "Core Competency: " + this.coreCompetency + s;
+        String newLine = System.lineSeparator();
+                return newLine +
+                "ID: " + id + newLine +
+                "Name: " + (name.isEmpty() ? "Data not available" : name) + newLine +
+                "Employer: " + (employer.getValue().isEmpty() ? "Data not available" : employer) + newLine +
+                "Location: " + (location.getValue().isEmpty() ? "Data not available" : location) + newLine +
+                "Position Type: " + (positionType.getValue().isEmpty() ? "Data not available" : positionType) + newLine +
+                "Core Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" : coreCompetency) + newLine;
     }
 }

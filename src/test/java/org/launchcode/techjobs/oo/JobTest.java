@@ -45,28 +45,35 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job job =  new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newLine = System.lineSeparator();
 
-        assertEquals(System.lineSeparator() + "ID: " + job.getId() + System.lineSeparator() + "Name: " + job.getName() + System.lineSeparator() + "Employer: " + job.getEmployer() + System.lineSeparator() + "Location: " + job.getLocation() + System.lineSeparator() + "Position Type: " + job.getPositionType() + System.lineSeparator() + "Core Competency: " + job.getCoreCompetency() + System.lineSeparator(), job.toString());
+        assertTrue(job.toString().startsWith(newLine));
+        assertTrue(job.toString().endsWith(newLine));
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job job =  new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newLine = System.lineSeparator();
         assertEquals(job.toString(), job.toString());
-        assertEquals("ID: " + job.getId(), "ID: " + job.getId());
-        assertEquals("Name: " + job.getName(), "Name: " + job.getName());
-        assertEquals("Employer: " + job.getEmployer(), "Employer: " + job.getEmployer());
-        assertEquals("Location: " + job.getLocation(), "Location: " + job.getLocation());
-        assertEquals("Position Type: " + job.getPositionType(), "Position Type: " + job.getPositionType());
-        assertEquals("Core Competency: " + job.getCoreCompetency(), "Core Competency: " + job.getCoreCompetency());
+        assertEquals(newLine + "ID: " + job.getId() + newLine +
+                "Name: Product tester" + newLine +
+                "Employer: ACME" + newLine +
+                "Location: Desert" + newLine +
+                "Position Type: Quality control" + newLine +
+                "Core Competency: Persistence" + newLine,
+                job.toString());
     }
     @Test
     public void testToStringHandlesEmptyField() {
         Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        assertEquals("ID: " + job.getId(), "ID: " + job.getId());
-        assertEquals("Employer: " + "Data Unavailable", "Employer: " + "Data Unavailable");
-        assertEquals("Location: " + "Data Unavailable", "Location: " + "Data Unavailable");
-        assertEquals("Position Type: " + "Data Unavailable", "Position Type: " + "Data Unavailable");
-        assertEquals("Core Competency: " + "Data Unavailable", "Core Competency: " + "Data Unavailable");
+        String newLine = System.lineSeparator();
+        assertEquals(newLine + "ID: " + job.getId() + newLine +
+                        "Name: Data not available" + newLine +
+                        "Employer: Data not available" + newLine +
+                        "Location: Data not available" + newLine +
+                        "Position Type: Data not available" + newLine +
+                        "Core Competency: Data not available" + newLine,
+                job.toString());
 
     }
 
